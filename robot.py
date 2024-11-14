@@ -65,4 +65,4 @@ robot = Robot(motor_links = port.?, motor_rechts = port.?, wielbasis = ?, wieldi
 async def main():
     # Schrijf hieronder de code om de robot mee te sturen.
 
-runloop.run(main())
+run(main())
