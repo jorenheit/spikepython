@@ -1,5 +1,5 @@
 from hub import port
-import runloop
+from runloop import run
 import motor_pair
 import motor
 import math
@@ -60,7 +60,9 @@ class Robot:
         await self.draai(-abs(hoek), abs(snelheid))
 
 
+# Stel hieronder eerst je motor in. Verander de vraagtekens naar de juiste letters en waarden:
+robot = Robot(motor_links = port.?, motor_rechts = port.?, wielbasis = ?, wieldiameter = ?)
 async def main():
-    # Hier komt jouw code om de robot mee te besturen!
+    # Schrijf hieronder de code om de robot mee te sturen.
 
 runloop.run(main())
