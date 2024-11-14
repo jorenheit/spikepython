@@ -61,10 +61,6 @@ class Robot:
 
 
 async def main():
-    robot = Robot(motor_links = port.A, motor_rechts = port.E, wielbasis = 14.5, wieldiameter = 8.5)
-    
-    await robot.vooruit(afstand = 100, snelheid = 50)
-    await robot.achteruit(afstand = 100, snelheid = 50)
-
+    # Hier komt jouw code om de robot mee te besturen!
 
 runloop.run(main())
