@@ -12,7 +12,10 @@ class Robot:
         self.wielomtrek = wieldiameter * math.pi
         self.motor_links = motor_links
         self.motor_rechts = motor_rechts
-
+        
+    def corrigeer(self, afstand_ingesteld, afstand_gereden):
+        self.wieldiameter *= afstand_gereden / afstand_ingesteld
+        
     async def vooruit(self, afstand, snelheid):
         hoek = int(360 * afstand / (math.pi * self.wieldiameter))
         hoeksnelheid = int(360 * snelheid / (math.pi * self.wieldiameter))
@@ -62,6 +65,7 @@ class Robot:
 
 # Stel hieronder eerst je motor in. Verander de vraagtekens naar de juiste letters en waarden:
 robot = Robot(motor_links = port.?, motor_rechts = port.?, wielbasis = ?, wieldiameter = ?)
+
 async def main():
     # Schrijf hieronder de code om de robot mee te sturen.
 
