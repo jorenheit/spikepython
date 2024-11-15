@@ -43,15 +43,13 @@ class Robot:
     async def test_arm_achter(self):
         await self.test_arm(self.motor_arm_achter)
 
-    def stel_arm_voor_in(self, motor_arm_voor, arm_voor_laag, arm_voor_hoog):
-        self.motor_arm_voor = motor_arm_voor
-        self.arm_voor_hoog = arm_voor_hoog 
-        self.arm_voor_laag = arm_voor_laag
+    def stel_arm_voor_in(self, laag, hoog):
+        self.arm_voor_laag = laag
+        self.arm_voor_hoog = hoog 
 
-    def stel_arm_achter_in(self, motor_arm_achter, arm_achter_laag, arm_achter_hoog):
-        self.motor_arm_achter = motor_arm_achter
-        self.arm_achter_hoog = arm_achter_hoog
-        self.arm_achter_laag = arm_achter_laag
+    def stel_arm_achter_in(self, laag, hoog):
+        self.arm_achter_laag = laag
+        self.arm_achter_hoog = hoog
 
     def corrigeer_wieldiameter(self, afstand_ingesteld, afstand_gereden):
         self.wieldiameter *= afstand_gereden / afstand_ingesteld
@@ -142,6 +140,6 @@ robot.corrigeer_wieldiameter(afstand_ingesteld = 100, afstand_gereden = 100)
 robot.corrigeer_wielbasis(hoek_ingesteld = 360, hoek_gedraaid = 360)
 
 async def main():
-    # Hier komt de code om de robot mee te besturen
+    # Hier schrijf je de code om de robot mee te besturen!
 
 run(main())
