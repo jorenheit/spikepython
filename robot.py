@@ -129,12 +129,12 @@ class Robot:
 
 
 # Stel hier je robot in:
-robot = Robot(motor_links = port.A, 
-              motor_rechts = port.E, 
-              motor_arm_voor = port.D,
-              motor_arm_achter = port.C,
-              wielbasis = 14.5, 
-              wieldiameter = 8.5)
+robot = Robot(motor_links = port.?, 
+              motor_rechts = port.?, 
+              motor_arm_voor = port.?,
+              motor_arm_achter = port.?,
+              wielbasis = ?, 
+              wieldiameter = ?)
 
 robot.corrigeer_wieldiameter(afstand_ingesteld = 100, afstand_gereden = 100)
 robot.corrigeer_wielbasis(hoek_ingesteld = 360, hoek_gedraaid = 360)
