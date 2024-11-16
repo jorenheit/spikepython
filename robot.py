@@ -4,6 +4,10 @@ import motor_pair
 import motor
 import math
 
+############################################################################
+# Verander niks aan de code hieronder! Scroll eerst helemaal naar beneden. #
+############################################################################
+
 class Robot:
     def __init__(self, motor_links, motor_rechts, motor_arm_voor, motor_arm_achter, wielbasis, wieldiameter):
         motor_pair.pair(motor_pair.PAIR_1, motor_links, motor_rechts)
@@ -128,18 +132,98 @@ class Robot:
         await self.draai(-abs(hoek), abs(snelheid))
 
 
-# Stel hier je robot in:
-robot = Robot(motor_links = port.?, 
-              motor_rechts = port.?, 
-              motor_arm_voor = port.?,
-              motor_arm_achter = port.?,
-              wielbasis = ?, 
-              wieldiameter = ?)
+##########################################################################################
+# Vanaf hier kun je de code aanpassen voor jouw eigen robot. Volg de aangegeven stappen. #
+##########################################################################################
+
+# Stap 1: Stel eerst je robot in. Verander de poorten, de wielbasis en de wieldiameter als
+#         deze anders zijn op jouw eigen robot.
+robot = Robot(motor_links = port.A, 
+              motor_rechts = port.E, 
+              motor_arm_voor = port.D,
+              motor_arm_achter = port.C,
+              wielbasis = 14.5, 
+              wieldiameter = 8.5)
+
+# Stap 2: Om de robot nauwkeuriger te maken, kun je metingen doen en de resultaten daarvan 
+#         hieronder invoeren. Je moet hiervoor twee metingen doen.
+#
+#         !!! Deze metingen zijn optioneel, je kunt ook meteen door naar stap 3 en deze stap 
+#         later doen als je robot onnauwkeurig blijkt te zijn. !!!
+#
+#         Meting 1: Geef de robot de opdracht om 100cm te rijden met het commando (in main)
+#                           await robot.vooruit(afstand = 100, snelheid = 20)
+#                   Voer de afstand (in cm) die de robot daadwerkelijk gereden heeft 
+#                   hieronder in bij "afstand gereden":
 
 robot.corrigeer_wieldiameter(afstand_ingesteld = 100, afstand_gereden = 100)
+
+#         Meting 2: Geef de robot de opdracht om 360 graden te draaien met het commando
+#                           await robot.draai(hoek = 360, snelheid = 20)
+#                   Voer de hoek die de robot daadwerkelijk heeft gedraaid hieronder in
+#                   bij "hoek_gedraaid": 
+
 robot.corrigeer_wielbasis(hoek_ingesteld = 360, hoek_gedraaid = 360)
 
+# Stap 3: Sla deze stap over als je de armen van de robot niet wil gebruiken. Probeer je dat 
+#         toch te doen, dan zul je een harde piep van de robot horen om je eraan te herinneren
+#         dat je deze stap alsnog moet doen!
+#
+#         Om de armen te kunnen gebruiken, moeten we de robot eerst vertellen bij welke motor-
+#         standen de armen omhoog en omlaag staan. Om erachter te komen welke standen dat zijn, 
+#         kun je eerst een test-commando geven (in een verder lege main):
+#
+#                 await robot.test_arm_voor()
+#
+#         Als je dit programma runt, zal de robot eerst piepen. Daarna kun je met de pijltjes-
+#         knoppen op de robot de voorste arm op en neer bewegen. Zoek de uiterste standen op
+#         en noteer de standen van de motor (die staan aangegeven boven in dit scherm). Voer
+#         daarna de juiste waarden in in het commando hieronder.
+#
+# !!! Haal de hasttag (#) hieronder weg en vul de juiste waarden in:
+# robot.stel_arm_voor_in(laag = ..., hoog = ...)
+#
+#         Doe nu hetzelfde voor de achterste arm:
+
+#                 await robot.test_arm_achter()
+#
+# !!! Haal de hashtag (#) hieronder weg en vul de juiste waarden in:
+# robot.stel_arm_achter_in(laag = ..., hoog = ...)
+
+
+# Stap 4: Schrijf hieronder je programma in de main-functie. Alle code in de main-functie  
+#         moet beginnen met een TAB (of een aantal spaties, zolang je maar steeds even 
+#         veel gebruikt en de regels netjes onder elkaar komen te staan).
+#
+#         Hieronder staat een lijst van de commando's die je aan de robot kunt geven. 
+#         Om deze commando's aan de robot te geven, gebruik je het volgende patroon:
+#                  await robot.commando(argument1 = waarde1, argument2 = waarde2, etc)
+#         Bijvoorbeeld, om 100cm vooruit te rijden met een snelheid van 30 cm/s:
+#                  await robot.vooruit(afstand = 100, snelheid = 30)
+#         Bekijk ook het voorbeeld-programma in main voor meer voorbeelden van commando's.
+#
+#         Beschikbare commando's:
+#             vooruit(afstand, snelheid)
+#             achteruit(afstand, snelheid)
+#             bocht_links(bocht_straal, bocht_hoek, snelheid)
+#             bocht_rechts(bocht_straal, bocht_hoek, snelheid)
+#             draai_links(hoek, snelheid)
+#             draai_rechts(hoek, snelheid)
+#             arm_voor_omhoog(snelheid)
+#             arm_voor_omlaag(snelheid)
+#             arm_achter_omhoog(snelheid)
+#             arm_achter_omlaag(snelheid)
+
 async def main():
-    # Hier schrijf je de code om de robot mee te besturen!
+    # Dit is een voorbeeld-programma. Verander dit zodat de robot doet wat JIJ wil!
+    await robot.arm_voor_omhoog(snelheid = 100)
+    await robot.vooruit(afstand = 50, snelheid = 30)
+    await robot.bocht_rechts(bocht_straal = 10, bocht_hoek = 180, snelheid = 30)
+    await robot.vooruit(afstand = 50, snelheid = 50)
+    await robot.arm_voor_omhoog(snelheid = 100)
+
+#########################################
+# STOP! Laat de regel hieronder intact. #
+#########################################
 
 run(main())
