@@ -20,14 +20,14 @@ Als je UbboSpike eenmaal hebt geïnstalleerd, hoef je deze stappen niet te herha
 
 ### UbboSpike gebruiken
 In het demobestand (ubbospike_demo.llsp3) kun je zien hoe je UbboSpike gebruikt. Het grote verschil is dat je nu de UbboSpike module moet importeren:
-```
+```python
 from UbboSpike import Robot
 ```
 Daarna kun je net als voorheen je robot aanmaken, instellen en besturen.
 
 ### Commando's Stapelen
 Een nieuwe feature van UbboSpike is dat je commando's kunt stapelen en daarna tegelijkertijd kunt uitvoeren. Hiervoor gebruik je de nieuwe functies `taak()` en `doe_taken()`. Eerst verzamel je de commando's die je tegelijkertijd wilt uitvoeren. Let er wel op dat dit taken zijn die tegelijkertijd uitgevoerd kunnen worden (je kunt natuurlijk niet tegelijkertijd vooruit en achteruit rijden).
-```
+```python
 vooruit =  robot.taak("vooruit", afstand = 50, snelheid = 50)
 arm_voor = robot.taak("arm_voor_procent", percentage = 50, snelheid = 200) 
 arm_achter = robot.taak("arm_achter_procent", percentage = 50, snelheid = 200)
